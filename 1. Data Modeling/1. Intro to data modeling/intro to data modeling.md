@@ -23,6 +23,8 @@ Properties of database transactions intended to guarantee validity even in the e
 - **Isolation:** Transactions are processed independently and securely, order does not matter. A low level of isolation enables many users to access the data simultaneously, however this also increases the possibilities of concurrency effects (e.g., dirty reads or lost updates). On the other hand, a high level of isolation reduces these chances of concurrency effects, but also uses more system resources and transactions blocking each other.
 - **Durability:** Completed transactions are saved to database even in cases of system failure. A commonly cited example includes tracking flight seat bookings. So once the flight booking records a confirmed seat booking, the seat remains booked even if a system failure occurs. 
 
+![image](https://github.com/codeslash21/data_engineering/assets/32652085/5c99fe1c-7b72-4af2-bd8e-89dd4bee4080)
+
 
 ## NOTE:
 - Relational databases include a schema of tables that are linked to each other.
