@@ -28,4 +28,7 @@ Properties of database transactions intended to guarantee validity even in the e
 
 ## NOTE:
 - Relational databases include a schema of tables that are linked to each other.
-- 
+- PostgreSQL is an open-source object-relational database system. PostgreSQL uses and builds upon SQL database language by providing various features that reliably store and scale complicated data workloads. PostgreSQL SQL syntax is different than other relational databases SQL syntax.
+- PostgreSQL allows duplicate
+- `!echo "alter user student createdb;" | sudo -u postgres psql` `|` is pipe operator in unix It takes the output from the command on the left and passes it as input to the command on the right. `alter user student createdb;` this means This SQL statement alters the properties of the PostgreSQL user `student` to grant it the ability to create databases createdb. `sudo -u postgres psql` This part of the command is essentially executing `psql` as the `postgres`. `postgres`, which is typically the default administrative user for PostgreSQL. `psql` this is the PostgreSQL interactive terminal. It allows you to interact with PostgreSQL databases using SQL commands. In summary, the entire command is using `sudo` to execute the `psql` command as the `postgres` user, and then it's passing the SQL statement `alter user student createdb;` to `psql`, which alters the `student` user in PostgreSQL to grant it the ability to create databases.
+- `studentdb` is the default database for postgreSQL
