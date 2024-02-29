@@ -25,6 +25,37 @@ Properties of database transactions intended to guarantee validity even in the e
 
 ![image](https://github.com/codeslash21/data_engineering/assets/32652085/5c99fe1c-7b72-4af2-bd8e-89dd4bee4080)
 
+## NoSQL Database
+NoSQL databases were created due to some of the issues faced with relational databases. NoSQL databases have been around since the 1970s, but they became more popular since the 2000s as data sizes increased and outages/downtime decreased in acceptability. Following are some example of NoSQL database
+- **Apache Cassandra** (Partition Row store)
+- **MongoDB** (Document store)
+- **DynamoDB** (Key-Value store)
+- **Apache HBase** (Wide Column Store)
+- **Neo4J** (Graph Database)
+
+![image](https://github.com/codeslash21/data_engineering/assets/32652085/ea4113f7-b36e-4203-90eb-9de080d4627d)
+
+![image](https://github.com/codeslash21/data_engineering/assets/32652085/0e3f094d-d2d9-491c-b3d3-6d955615d44c)
+
+There are some NoSQL databases that offer some form of ACID transaction. As of v4.0, MongoDB added multi-document ACID transactions within a single replica set. With their later version, v4.2, they have added multi-document ACID transactions in a sharded/partitioned deployment.
+
+## Apache Cassandra
+Apache Cassandra provides scalability and high availablity without compromising performance. Linear scalability and proven fault-tolerance on commodity hardware and cloud infrastructure make it perfect platform for mission-critical data. Apache cassandra uses it own query language CQL. Apache Cassandra requires data modeling based on the query you want. There are no duplicates in Apache cassnadra. Some use cases are
+1. Transaction logging (retail, health care)
+2. Internet of Things (IoT)
+3. Time series data
+4. Any workload that is heavy on writes to the database (since Apache Cassandra is optimized for writes).
+
+### Terminology
+![image](https://github.com/codeslash21/data_engineering/assets/32652085/34d2b50c-59ae-424e-affc-72cf8ae691da)
+
+- **Keyspace:** Collections of table
+- **Table:** Group of partition
+- **Row:** A single item
+- **Partition:** Fundamental unit of access. Collection of rows. How data is distributed.
+- **Primary Key:** Primary key is made up of a partition key and clustering columns
+- **Columns:** Clustering and data. Labeled element
+
 
 ## NOTE:
 - Relational databases include a schema of tables that are linked to each other.
