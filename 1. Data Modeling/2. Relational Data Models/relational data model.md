@@ -20,3 +20,11 @@ Normalisation to reduce data redundancy and increase data integrity, whereas den
 3. To make the relational model more informative to users
 4. To make the database neutral to the query statistics
 
+## Fact and Dimension table
+Fact table consists of the measurements, metrics or facts of a business process. Dimension table is a structure that categorizes facts and measures in order to enable users to answer business questions. Dimensions are people, prodcuts, place, time etc. 
+
+![image](https://github.com/codeslash21/data_engineering/assets/32652085/3a26aa37-4a2c-4cc7-b7d2-70e047c1a006)
+
+
+## NOTE
+- Two of most popular(because of their simplicity) data mart schema for data warehouses are: Star schema and Snowflake schema
