@@ -25,6 +25,96 @@ Fact table consists of the measurements, metrics or facts of a business process.
 
 ![image](https://github.com/codeslash21/data_engineering/assets/32652085/3a26aa37-4a2c-4cc7-b7d2-70e047c1a006)
 
+## Star Schema
+Star Schema is the simplest style of data mart schema. The star schema consists of one or more fact tables referencing any number of dimension tables. 
+- Gets its name from the physical model resembling a star shape
+- A fact table is at its center
+- Dimension table surrounds the fact table representing the star’s points.
+
+![image](https://github.com/codeslash21/data_engineering/assets/32652085/1cfbcfd2-88be-48d9-9078-df35232e0085)
+
+### Benefits
+- You can denormalize your table
+- Simplifies queries with simple joins
+- Fast aggregations. Aggregations perform calculations and clustering of our data so that we do not have to do that work in our application. Examples : COUNT, GROUP BY etc
+
+### Drawbacks
+- Issues come up with denormalisation
+- Data integrity. As because of denormalisation there will be lots of duplicate data.
+- Decrease query flexibility. Because of denormalisation you will not be able to do as many ad-hoc queries on your table.
+- Many to many relationship is hard to support, it has been simplified.
+
+## Snowflake Schema
+Its a logical arrangement of table in multidimensional database represented by centralized fact tables with are connected to multiple dimension tables. A complex snowflake shape emerges when the dimensions of snowflake schema are elaborated, having multiple levels of relationship, child tables ahaving multiple parent.
+
+![image](https://github.com/codeslash21/data_engineering/assets/32652085/57a1f85e-1b31-4460-b34c-d09e4301ae79)
+
+### Star VS Snowflake Schema
+- Star Schema is a special, simplified case of the snowflake schema.
+- Star schema does not allow for many to many relationships while the snowflake schema does.
+- Snowflake schema is more normalized than Star schema but only in 1NF or 2NF
+
+## Data Definition and Constraints
+#### NOT NULL
+The NOT NULL constraint indicates that the column cannot contain a null value. You can add NOT NULL constraints to more than one column. Usually this occurs when you have a COMPOSITE KEY.
+```
+CREATE TABLE IF NOT EXISTS customer_transactions (
+    customer_id int NOT NULL, 
+    store_id int NOT NULL, 
+    spent numeric
+);
+```
+#### UNIQUE
+The UNIQUE constraint is used to specify that the data across all the rows in one column are unique within the table. The UNIQUE constraint can also be used for multiple columns, so that the combination of the values across those columns will be unique within the table. In this latter case, the values within 1 column do not need to be unique.
+```
+CREATE TABLE IF NOT EXISTS customer_transactions (
+    customer_id int NOT NULL UNIQUE, 
+    store_id int NOT NULL UNIQUE, 
+    spent numeric 
+);
+```
+```
+CREATE TABLE IF NOT EXISTS customer_transactions (
+    customer_id int NOT NULL, 
+    store_id int NOT NULL, 
+    spent numeric,
+    UNIQUE (customer_id, store_id, spent)
+);
+```
+#### PRIMARY KEY
+The PRIMARY KEY constraint is defined on a single column, and every table should contain a primary key. The values in this column uniquely identify the rows in the table. If a group of columns are defined as a primary key, they are called a composite key. That means the combination of values in these columns will uniquely identify the rows in the table. By default, the PRIMARY KEY constraint has the unique and not null constraint built into it.
+```
+CREATE TABLE IF NOT EXISTS store (
+    store_id int PRIMARY KEY, 
+    store_location_city text,
+    store_location_state text
+);
+```
+```
+CREATE TABLE IF NOT EXISTS customer_transactions (
+    customer_id int, 
+    store_id int, 
+    spent numeric,
+    PRIMARY KEY (customer_id, store_id)
+);
+```
+#### Upsert
+In RDBMS language, the term upsert refers to the idea of inserting a new row in an existing table, or updating the row if it already exists in the table. The action of updating or inserting has been described as "upsert". The way this is handled in PostgreSQL is by using the INSERT statement in combination with the ON CONFLICT clause. 
+```
+INSERT INTO customer_address (
+VALUES (432, '758 Main Street', 'Chicago', 'IL')
+);
+```
+```
+INSERT INTO customer_address (customer_id, customer_street)
+VALUES
+    (
+    432, '923 Knox Street, Suite 1' 
+) 
+ON CONFLICT (customer_id) 
+DO UPDATE
+    SET customer_street  = EXCLUDED.customer_street;
+```
 
 ## NOTE
 - Two of most popular(because of their simplicity) data mart schema for data warehouses are: Star schema and Snowflake schema
