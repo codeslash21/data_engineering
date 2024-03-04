@@ -67,3 +67,4 @@ WITH CLUSTERING ORDER BY (album_name DESC, city DESC);
 ## NOTE
 - In Apache Cassandra every node is connected to every node -- it's peer to peer database architecture.
 - In Apache Cassandra no duplicate is allowed. If we try to insert a new data with same PK which is already there then that data will be overwritten, no error will be thrown.
+- If we dont have unique primary key, then for a query cassandra returns all the rows.
