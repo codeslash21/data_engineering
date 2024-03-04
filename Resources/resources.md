@@ -1,4 +1,5 @@
 # Important Resources
+- [Capacity planning and hardware selection for DataStax Enterprise implementations](https://docs.datastax.com/en/dseplanning/docs/dse-capacity-planning.html)
 - [DDl constraints](https://www.postgresql.org/docs/9.4/ddl-constraints.html)
 - [Insert Statement](https://www.postgresql.org/docs/9.5/sql-insert.html)
 - [Multi-Document ACID Transactions on MongoDB](https://www.mongodb.com/collateral/mongodb-multi-document-acid-transactions)
