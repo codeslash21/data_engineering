@@ -1,4 +1,12 @@
 # NoSQL Data Modeling
+- [When to Use NoSQL](#when-to-use-nosql)
+- [Eventual Consistency](#eventual-consistency)
+- [CAP Theorem](#cap-theorem)
+- [CQL](#cql)
+- [Primary Key](#primary-key)
+- [Clustering Columns](#clustering-columns)
+- [WHERE clause](#where-clause)
+  
 ## When to Use NoSQL:
 - Need high Availability in the data: Indicates the system is always up and there is no downtime
 - Have Large Amounts of Data
@@ -9,7 +17,7 @@
 ## Eventual Consistency
 Its related to distributed database system. Over time (if no new changes are made) each copy of the data will be the same, but if there are new changes, the data may be different in different locations. The data may be inconsistent for only milliseconds. There are workarounds in place to prevent getting stale data.
 
-## CAP Theorem:
+## CAP Theorem
 ![image](https://github.com/codeslash21/data_engineering/assets/32652085/1a2ef323-7c3f-4a59-bfc8-053c7ec6cedf)
 
 - **Consistency:** Every read from the database gets the latest (and correct) piece of data or an error
@@ -59,4 +67,3 @@ WITH CLUSTERING ORDER BY (album_name DESC, city DESC);
 ## NOTE
 - In Apache Cassandra every node is connected to every node -- it's peer to peer database architecture.
 - In Apache Cassandra no duplicate is allowed. If we try to insert a new data with same PK which is already there then that data will be overwritten, no error will be thrown.
-- 
