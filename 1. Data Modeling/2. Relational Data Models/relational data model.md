@@ -1,4 +1,11 @@
 # Relational Data Modeling
+- [OLAP VS OLTP](#olap-vs-oltp)
+- [Normalisation and Denormalisation](#normalisation-and-denormalisation)
+- [Fact and Dimension table](#fact-and-dimension-table)
+- [Star Schema](#star-schema)
+- [Snowflake Schema](#snowflake-schema)
+- [Data Definition and Constraints](#data-definition-and-constraints)
+- 
 Database is a set of related data and the way it is organized. Database Management System is a computer software that allows users to interact with the database and provides access to all of the data.
 ![image](https://github.com/codeslash21/data_engineering/assets/32652085/c5ca3a55-adff-4779-9ce0-32b05ee15b08)
 
@@ -14,7 +21,7 @@ The key to remember the difference between OLAP and OLTP is analytics (A) vs tra
 ## Normalisation and Denormalisation
 Normalisation to reduce data redundancy and increase data integrity, whereas denormalisation must be done in read heavy workloads to increase. Denormalisation is the process of trying to improve the read performance of a database at the expense of losing some write performance by adding redundant copies of data. JOINS on the database allow for outstanding flexibility but are extremely slow. If you are dealing with heavy reads on your database, you may want to think about denormalizing your tables. You get your data into normalized form, and then you proceed with denormalization. So, denormalization comes after normalization. Denormalization is part of the data modeling process to make data more easily queried.
 
-- **Objectives of Normalisation:**
+#### Objectives of Normalisation:
 1. To free the database from unwanted insertions, updates, & deletion dependencies
 2. To reduce the need for refactoring the database as new types of data are introduced
 3. To make the relational model more informative to users
