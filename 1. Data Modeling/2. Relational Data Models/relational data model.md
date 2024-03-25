@@ -49,18 +49,18 @@ Star Schema is the simplest style of data mart schema. The star schema consists 
 ### Drawbacks
 - Issues come up with denormalisation
 - Data integrity. As because of denormalisation there will be lots of duplicate data.
-- Decrease query flexibility. Because of denormalisation you will not be able to do as many ad-hoc queries on your table.
+- Decrease query flexibility. Because of denormalisation you will not be able to do as many ad-hoc queries on your table. As, denormalized table has redundant data, which can lead to inconsistencies and anomalies. Ad-hoc queries on denormalised table may produce incorrect and misleading result due to presence of redundant data. Denormalised table is tends to be larger than its counterpart, so ad-hoc queries will take longer time to execute and may impact the performance of the overall system. Denormalised tables are optimised for specific pre-defined queires whereas ad-hoc queries needs flexibility in accessing and manipulating the data, denormalised tables may not provide necessary flexibilty to handle these types of query efficiently. 
 - Many to many relationship is hard to support, it has been simplified.
 
 ## Snowflake Schema
-Its a logical arrangement of table in multidimensional database represented by centralized fact tables with are connected to multiple dimension tables. A complex snowflake shape emerges when the dimensions of snowflake schema are elaborated, having multiple levels of relationship, child tables ahaving multiple parent.
+Its a logical arrangement of table in multidimensional database represented by centralized fact tables which are connected to multiple dimension tables. A complex snowflake shape emerges when the dimensions of snowflake schema are elaborated, having multiple levels of relationship, child tables having multiple parent.
 
 ![image](https://github.com/codeslash21/data_engineering/assets/32652085/57a1f85e-1b31-4460-b34c-d09e4301ae79)
 
 ### Star VS Snowflake Schema
 - Star Schema is a special, simplified case of the snowflake schema.
 - Star schema does not allow for many to many relationships while the snowflake schema does.
-- Snowflake schema is more normalized than Star schema but only in 1NF or 2NF
+- Snowflake schema is more normalized than Star schema. Star schema is denormalised and can be in 1NF or 2NF where snowflake schema can be in 3NF and BCNF also.
 
 ## Data Definition and Constraints
 #### NOT NULL
