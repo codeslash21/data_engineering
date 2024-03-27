@@ -7,4 +7,8 @@
 - [OLAP vs OLTP](https://stackoverflow.com/questions/21900185/what-are-oltp-and-olap-what-is-the-difference-between-them)
 - [PostgreSQL data types](https://www.postgresql.org/docs/current/datatype.html)
 - [PostgreSQL upsert](https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-upsert/)
+- [RDD Programming Guide](https://spark.apache.org/docs/latest/rdd-programming-guide.html)
+- [Spark Documentation](https://spark.apache.org/docs/latest/)
+- [Spark Cluster Overview](https://spark.apache.org/docs/3.0.2/cluster-overview.html)
+- [Tale of Three Apache Spark APIs: RDDs vs DataFrames and Datasets](https://www.databricks.com/blog/2016/07/14/a-tale-of-three-apache-spark-apis-rdds-dataframes-and-datasets.html)
 - 
