@@ -49,3 +49,21 @@ That means you can write Spark code that runs in either a Spark Cluster, in a Ju
 - To read data frames, we need to use Spark SQL equivalent, the `SparkSession`. Similarity to the `SparkConf`, we can specify some parameters to create a SparkSession. `getOrCreate()` for example, means that if you already have a `SparkSession` running, instead of creating a new one, the old one will be returned and its parameters will be modified to the new configurations.
 
 ![image](https://github.com/codeslash21/data_engineering/assets/32652085/b1947dfe-a9a3-4683-a9fb-924a6603dccf)
+
+## Map and Lambda
+Lets say we have a log of songs (just a normal Python list) and  we'll convert that to a distributed dataset that Spark can use. This uses a special `spark.sparkContext` object. The Spark Context has a method `parallelize` that takes a Python object and distributes the object across the machines in your cluster so Spark can process the dataset.
+```
+distributed_song_log_rdd = spark.sparkContext.parallelize(log_of_songs)
+def convert_song_to_lowercase(song):
+  return song.lower()
+# convert alll the songs to lowercase
+distributed_song_log_rdd.map(convert_song_to_lowercase)
+```
+All of these steps will appear to run instantly but remember, the spark commands are using lazy evaluation, they haven't really converted the songs to lowercase yet. Spark will procrastinate in transforming the songs to lowercase since you might have several other processing steps like removing punctuation, Spark wants to wait until the last minute to see if it can streamline its work, and combine these into a single stage. If we want to force Spark to take some action on the data, we can use the `collect` function, which gathers the results from all of the machines in our cluster.
+```
+distributed_song_log_rdd.map(convert_song_to_lowercase).collect()
+```
+You can also use anonymous functions in Python. Anonymous functions are a Python feature for writing functional style programs. Use the special keyword `lambda`, and then write the input of the function followed by a colon and the expected output. You'll see anonymous functions all over the place in Spark. They're completely optional, you could just define functions if you prefer. But lambdas are a best practice.
+```
+distributed_song_log_rdd.map(lambda song: song.lower())
+```
