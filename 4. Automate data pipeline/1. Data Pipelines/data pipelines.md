@@ -66,3 +66,45 @@ Run the above shell scripts to start the required services such as Airflow sched
 airflow users create --email student@example.com --firstname aStudent --lastname aStudent --password admin --role Admin --username admin
 ```
 You can list all the DAGs using this command `airflow dags list`. If you see this dialog on Airflow web server UI `The scheduler does not appear to be running.`, then run the following command `airflow scheduler`.
+
+### DAG Example
+```
+import logging
+import pendulum
+from airflow.decorators import dag, task
+
+# @dag decorates the greet_task to denote it's the main function. In this case @dag decorator takes one argument
+@dag(
+    start_date=pendulum.now()
+)
+def greet_flow_dag():    
+    # @task decorates the re-usable hello_world_task - it can be called as often as needed in the DAG. The function decorated with task will
+    # be executed when DAG run. A DAG may have more than one task. task decorator helps you to create your own operator. What operator does is
+    # when you call your operator it will return a task, that task can be executed inside of our Airflow DAG. 
+    @task
+    def hello_world_task():
+        logging.info("Hello World!")
+
+    # hello_world represents a discrete invocation of the hello_world_task
+    hello_world=hello_world_task()
+
+# greet_dag represents the invocation of the greet_flow_dag. If we dont invoke the DAG function and assign that to a variable. And if we dont
+# do that its not considered as valid DAG and it will execute inside of Airflow.
+greet_dag=greet_flow_dag()
+```
+
+## Airflow Components
+![image](https://github.com/codeslash21/data_engineering/assets/32652085/1bb35dcf-4d1f-448d-8478-d1b98cbcafe4)
+
+- **Scheduler** orchestrates the execution of jobs on a trigger or schedule. The Scheduler chooses how to prioritize the running and execution of tasks within the system.
+- **Work Queue** is used by the scheduler in most Airflow installations to deliver tasks that need to be run to the Workers.
+- **Worker** processes execute the operations defined in each DAG. In most Airflow installations, workers pull from the work queue when it is ready to process a task. When the worker completes the execution of the task, it will attempt to process more work from the work queue until there is no further work remaining. When work in the queue arrives, the worker will begin to process it.
+- **Metastore Database** saves credentials, connections, history, and configuration. The database, often referred to as the metadata database, also stores the state of all tasks in the system. Airflow components interact with the database with the Python ORM, SQLAlchemy.
+- **Web Interface** provides a control dashboard for users and maintainers. Throughout this course you will see how the web interface allows users to perform tasks such as stopping and starting DAGs, retrying failed tasks, configuring credentials, The web interface is built using the Flask web-development microframework.
+
+- Airflow is not a data processing framework. In airfflow you wont pass data in memory between steps in your DAG. Instead you will use Airflow to coordinate the movement of data between other data stores and data processing tools. Airflow can be used to run transformations, however the result of those transformations must always be stored in a destination data store at the end of each step, you will not pass data from step to step in airflow. Additionally, airflow worker has less memory and processing power individually than some data frameworks offer in aggregate. Tools like Spark are able to expose the computing power of many machines all at once, whereas with airflow you will always be llimited to the processing power of a single machine. This is why airflow developers prefer to use airflow to trigger heavy processing steps in analytics warehouses like Redshift or data framework like Spark instead of within airflow itself.
+
+## How Airflow Works
+![image](https://github.com/codeslash21/data_engineering/assets/32652085/7db28b59-cb8d-4181-90e1-a77d6368e263)
+
+![image](https://github.com/codeslash21/data_engineering/assets/32652085/0e07d202-54da-4644-a7fe-7a7d9810b214)
