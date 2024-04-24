@@ -1,5 +1,22 @@
 
 # Data Pipeline
+- [Introduction](#introduction)
+- [ETL VS ELT](#etl-vs-elt)
+- [Apache Kafka](#apache-kafka)
+- [Redshift](#redshift)
+- [DAG And Pipeline](#dag-and-pipeline)
+- [Data Validation](#data-validation)
+- [Apache Airflow](#apache-airflow)
+- [DAG Example](#dag-example)
+- [Airflow Components](#airflow-components)
+- [How Airflow Works](#how-airflow-works)
+- [Operators](#operators)
+- [Task Dependencies](#task-dependencies)
+- [Airflow Hooks](#airflow-hooks)
+- [Templating](#templating)
+
+
+## Introduction
 A data pipeline describes, in code, a series of sequential data processing steps. Depending on the data requirements for each step, some steps may occur in parallel. Data pipelines also typically occur on a schedule. Extract, transform and load (ETL), or extract, load, and transform (ELT), are common patterns found in data pipelines, but not strictly required. Some data pipelines perform only a subset of ETL or ELT. Data Pipelines provide a set of logical guidelines and a common set of terminology. The conceptual framework of data pipelines will help you better organize and execute everyday data engineering tasks. Examples of data pipelines:
 - Personalized emails that are triggered after a data pipeline executed.
 - Companies commonly use data pipelines to orchestrate the analysis that determines pricing. For example, a rideshare app where you were offered real-time pricing.
