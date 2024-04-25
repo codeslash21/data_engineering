@@ -11,4 +11,5 @@
 - [Spark Documentation](https://spark.apache.org/docs/latest/)
 - [Spark Cluster Overview](https://spark.apache.org/docs/3.0.2/cluster-overview.html)
 - [Tale of Three Apache Spark APIs: RDDs vs DataFrames and Datasets](https://www.databricks.com/blog/2016/07/14/a-tale-of-three-apache-spark-apis-rdds-dataframes-and-datasets.html)
+- [Templates Reference](https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html)
 - 
