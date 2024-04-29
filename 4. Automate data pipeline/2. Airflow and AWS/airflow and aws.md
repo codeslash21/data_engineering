@@ -31,7 +31,7 @@ aws iam attach-role-policy --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAcce
 ```
 
 ## Set Up Connections
-### Connecting to AWS
+- ### Connecting to AWS
 The `MetastoreBackend` python class connects to the Airflow Metastore Backend to retrieve credentials and other data needed to connect to outside systems.
 ```
 from airflow.decorators import dag
@@ -48,9 +48,10 @@ def load_data_to_redshift_dag():
         logging.info(vars(aws_connection))
 ```
 
-### Connecting to Redshift
-To connect to Redshift, you can use the PostgresHook and PostgresOperator classes provided by Airflow. 
-#### PostgresHook
+- ### Connecting to Redshift
+To connect to `Redshift`, you can use the `PostgresHook` and `PostgresOperator` classes provided by Airflow. 
+
+- #### PostgresHook
 The `PostgresHook` class is a superclass of the Airflow `DbApiHook`. When you instantiate the class, it creates an object that contains all the connection details for the Postgres database. It retrieves the details from the Postgres connection you created earlier in the Airflow UI.
 ```
 from airflow.hooks.postgres_hook import PostgresHook
@@ -60,7 +61,7 @@ def load_task():
       redshift_hook.run("SELECT * FROM trips")
 ```
 
-#### PostgresOperator
+- #### PostgresOperator
 The PostgresOperator class executes sql, and accepts the following parameters:
 - postgres_conn_id
 - task_id
