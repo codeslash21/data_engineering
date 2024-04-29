@@ -14,7 +14,7 @@ from udacity.common import sql_statements
 )
 def load_data_to_redshift():
 
-
+    # copy data from S3 to redshift
     @task
     def load_task():    
         metastoreBackend = MetastoreBackend()
